@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" crossorigin="anonymous">
 <title>Money.com</title>
 <style type="text/css">
   *{
@@ -19,7 +20,7 @@
   position:absolute;
   top:0.9rem;
   right:0.7rem;
-  display:no;
+  display:none;
   }
   .header{
   position:relative;
@@ -358,6 +359,7 @@
      word-wrap:;
    }
       .loc .icons{
+      transition:0.5s;
       padding-left:1rem;
    }
    .loc .footer2{
@@ -511,6 +513,39 @@
       display:none;
     }
     }
+    /* TOOLTIP*/
+    .cart-container,
+    .search-container{
+      display:flex;
+      place-content:center;
+      position:relative; 
+    }
+    .cart-container .tooltip,
+    .search-container .tooltip{
+      position:absolute;
+      bottom:-15px;
+      background:red;
+      color:#fff;
+      font-size:10px;
+      font-family:monospace;
+      padding:4px 5px;
+      border-radius:3px;
+      opacity:0;
+      transition:opacity 0.5s ease;
+      pointer-events:none;
+    }
+    .cart-container:hover .tooltip,
+    .search-container:hover .tooltip{
+      opacity:1;
+    }
+    /*TOOLTIP ENDS*/
+    .icons i{
+      transition:0.5s ease;
+    }
+    .icons i:hover {
+     color:#47D9F6;
+    }
+    
 </style>
 </head>
 <body>
@@ -522,8 +557,14 @@
   <div class="header">  
   <nav>     
   <h4 id="money">Money<span>Website</span></h4>
+  <div class="cart-container">
   <i class="fas fa-shopping-cart" class="fonts"></i>
-  <i class="fa fa-search" class="fonts"></i>
+  <div class="tooltip">Buy</div>
+  </div>
+  <div class="search-container">
+     <i class="fa fa-search" class="fonts"></i>
+    <div class="tooltip">Search</div>
+  </div>
   </nav>
   <div>
   <ul class="nav-bar">
