@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Money.com</title>
+<style type="text/css">
+  *{
+     font-family:Tahoma,Arial,sans-serif;
+     margin:0;
+     box-sizing:border-box;
+  }
+  img{
+   width:80%;
+  }
+  body{
+  height:300vh;
+  }
+  #check{
+  z-index:2;
+  position:absolute;
+  top:0.9rem;
+  right:0.7rem;
+  display:no;
+  }
+  .header{
+  position:relative;
+  width:100%;
+  height:50vh;
+  background:url("IMG7.jpg");
+  background-position:center;
+  background-size:cover;  
+  }
+  nav{
+    display:flex;
+    justify-content:space-around;
+    padding:1rem;
+    background:#46E8FD;
+    
+  }
+  nav ul{
+     padding-top:1rem;
+     padding-right:0.6rem;
+     list-style:none;
+     display:flex;
+     justify-content:space-between;
+  }
+  nav ul:nth-child(1){
+    text-transform:uppercase;
+    font-weight:bold;
+    color:;
+  }
+  span{
+   font-family:fantasy;
+    color:#CEB3FD;
+    font-size:larger;
+  }
+  nav  .head{
+  position:relative;
+  }
+  /*menulist*/
+  .menulist{
+  position:fixed;
+  top:3.2rem;
+  right:-100%;
+  background:#47D9F6;
+  width:60%;
+  height:70vh;
+  display:grid;
+  text-align:center;
+  transition:0.6s ease;
+  z-index:5;
+  }
+  .menulist li{
+  
+  display:block;
+  list-style:none;  
+  padding:2rem 0.7rem;
+  }
+  .menulist li a{
+  display:inline-block;
+  position:relative;
+  text-decoration:none;
+  color:#fff;
+  
+  }
+  .menulist li a::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:0%;
+  height:1px;
+  background:#fff;
+  transition:0.5s ease;
+  }
+  .menulist li a:hover:after{width:100%;}
+  .close-menu{
+  position:absolute;
+  }
+  .open-menu{
+  position:absolute;
+  top:0.9rem;
+  right:0.4rem;
+  }
+  #check:checked~.menulist{
+  right:0;
+  }
+  /*Word*/
+  .word{
+    position:relative;
+    background:rgba(0,0,0,0.4);
+    width:100%;
+    height:100%;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    grid-gap:;
+    padding:0.5rem;
+    box-shadow:0px 5px 5px rgba(104,104,104,0.8);
+  }
+  .sub>h3{
+    margin-bottom:3rem;
+  }
+    
+    
+  .sub .red{
+     color:red;
+     font-size:medium;
+  }
+  .card{ 
+     box-shadow: 0 15px 30px rgba(0,0,0,0.30), 0 11px 8px rgba(0,0,0,0.22);
+     width: 150px;
+     height:150px;
+     box-sizing: border-box;
+     transition:1s;
+  } 
+  .card>p{
+     text-align:center;
+     font-family:sans-serif;
+     font-weight:bolder;
+     text-transform:uppercase;
+  }
+  .card:hover {
+     box-shadow: 0 18px 36px rgba(0,0,0,0.30), 0 14px 11px rgba(0,0,0,0.22);
+     width: 160px;
+  }
+  /*Word*/
+  .word{
+    position:relative;
+    background:rgba(0,0,0,0.4);
+    width:100%;
+    height:100%;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    grid-gap:;
+    padding:0.5rem;
+    box-shadow:0px 5px 5px rgba(104,104,104,0.8);
+    margin-bottom:2rem;
+  }
+  .sub>h3{
+    margin-bottom:3rem;
+  }
+    
+    
+  .sub .red{
+     color:red;
+     font-size:medium;
+  }
+  .card{ 
+     box-shadow: 0 15px 30px rgba(0,0,0,0.30), 0 11px 8px rgba(0,0,0,0.22);
+     width: 150px;
+     height:150px;
+     box-sizing: border-box;
+     transition:1s;
+  } 
+  .card>p{
+     text-align:center;
+     font-family:sans-serif;
+     font-weight:bolder;
+     text-transform:uppercase;
+  }
+  .card:hover {
+     box-shadow: 0 18px 36px rgba(0,0,0,0.30), 0 14px 11px rgba(0,0,0,0.22);
+     width: 170px;
+     height:170px;
+  }
+  .word img{
+     display:block;
+     height:60%;
+     max-width:100%;
+     margin-left:1.9rem;
+     place-content:center;
+     width:60%;
+     border-radius:50%;
+     display:flex;
+     flex-direction:column;
+     margin-top:1.6rem;    
+  }
+  .flexbox{
+     width:100%;
+     background:#CEB3FD;
+     position:absolute;
+     bottom:0;
+     display:flex;
+     align-items:center;
+     padding:1rem;
+  }
+  .right-sec{
+  margin-left:5px;
+  width:80px;
+  display:flex;
+  margin-right:20px;
+  }
+  .middle-sec{
+  display:flex;
+  flex:1;
+  }
+  .middle-sec .input{
+  width:180px;
+  height:28px;
+  margin-right:-2.6px;
+  }
+  .input::placeholder{
+   font-size:16px;
+   font-family:monospace;
+  }
+.right-sec>p {
+    font-weight:bolder;
+    color:#fff;
+    font-family:sans-serif;
+  }
+  .flexbox .butt{
+    border-radius:2px;
+    border:none;
+    background:transparent;
+  }
+.flexbox .btn{
+ 
+ border-radius:3px;
+ padding:0.5rem;
+ border:1px soid #fff;
+ background:#47D9F6;
+ margin-left:-4px;
+ transition:1s;
+ }
+ .flexbox .btn:hover{
+ background:gold;
+ color:#000;
+ }
+  .flexbox  a{
+  padding-top:6rem;
+  color:#fff;
+ text-decoration:none;
+ text-transform:capitalize;
+ }
+ img{
+   width:30%;
+ }
+ .container{
+   display:grid;
+   grid-template-columns:repeat(3,1fr);
+   text-align:center;
+   border-bottom:1px solid red;
+   margin-top:1rem;
+   padding-bottom:2rem;
+ }
+ .box{
+      background:#ccc;
+      box-shadow:0 18px 36px rgba(0,0,0,0.30), 0 14px 11px rgba(0,0,0,0.22);
+      margin-right:5px;
+      padding:1rem;
+      transition:0.5s ease-in-out;
+   }
+   .box:hover{
+     transform:translateY(30px);
+   }
+   .box2{
+      display:flex;
+      text-align:center;
+      align-items:center;
+      background:#ccc;
+      box-shadow:0 18px 36px rgba(0,0,0,0.30), 0 14px 11px rgba(0,0,0,0.22);
+      margin-bottom:5px;
+      padding:1rem;
+      transition:0.5s ease-in-out;
+   }
+   .box2:hover{
+   transform:translateY(30px);
+   }
+   .form-box{
+   padding-top:1rem;
+   display:;
+   width:300px;
+   height:200px;
+   position:relative;
+   background:rgba(0,0,0,0.2);
+   margin:9% auto;
+   padding:10px;
+   overflow-x:scroll;
+   border-radius:3px;
+   }
+   .input-field{
+   width:100%;
+   padding:10px 0;
+   margin:5px 0;
+   border-left:0;
+   border-top:0;
+   border-right:0;
+   border-bottom:1px solid #999;
+   outline:none;
+   background:transparent;
+   }
+   .remember{
+     position:absolute;
+     top:7.6rem;
+     left:1.5rem;
+     color:#fff;
+     font-size:14px;
+   }
+   .check-box{
+     top:6.5rem;
+     left:0.3rem;
+     margin-top:1rem;
+     position:absolute;
+     
+   }
+   .submit-btn{
+     left:1.5rem;
+    position:absolute;
+      bottom:0.8rem;
+     display:block;
+     width:85%;
+     padding:8px 30px;
+     cursor:pointer;
+     display:block;
+     margin:auto;
+     background:#47D9F6;
+     border:none;
+     outline:none;
+     border-radius:30px;
+   }
+   .loc{
+      display:flex;
+      flex-direction:column;
+      height:200px;
+      align-content:space-around;
+      padding:1rem 2rem;
+   }
+   .loc p{
+     font-size:small;
+     color:#ccc;
+     margin-bottom:2.5rem;
+     margin-top:0.3rem;
+   }
+   .loc .h5{
+      margin-bottom:1rem;
+   }
+   .loc .wrap{
+     color:#ccc;
+     word-wrap:;
+   }
+      .loc .icons{
+      padding-left:1rem;
+   }
+   .loc .footer2{
+    
+     margin-top:1rem;
+     color:black;
+     
+   }
+   .footer2> p{
+     margin-left:-1rem;
+     text-align:left;
+     color:#000;
+   }
+   .about{
+        
+        margin:0 0.5rem;
+        padding:0.1rem 0.2rem;
+       display:flex;
+     /*  border:1px solid #ccc;*/
+    }
+    .about .bg {
+        
+        text-align:center;
+       width:70%;
+       padding:2rem 1rem;
+       background:#47D9F6;
+       
+    }
+    .about .bg2{
+       background:#CBCBCB;
+       line-height:1.2;
+    }
+    .bg2 p{
+       padding-left:5px;
+    }
+    section .showcase{ 
+     margin-top:1rem;
+     display:;
+     text-align:center;
+     column-count:3;
+    
+    }
+    .showcase #btn{
+     margin-top:1rem;
+     border-radius:3px;
+     padding:5px 0;
+     cursor:pointer;
+     display:block;
+     margin:;
+     background:#47D9F6;
+     transition:0.5s;
+    }
+    .showcase #btn:hover {
+       background:#CFACFD;
+    }
+    .showcase a{
+      display:block;
+    text-align:center;
+      text-transform:capitalize;
+      color:#000;
+      text-decoration:none;
+    }
+    section h4{
+      font-family:sans-serif;
+      font-size:25px;
+      text-align:center;
+      display:;
+    }
+    .footer{
+      position:fixed;
+      bottom:0;
+      background:#46E8FD;
+      width:100%;
+      text-align:center;
+      padding:1rem;
+    }
+    /*ends here*/
+    
+    @media screen and (min-width: 500px) and (max-width:1280px) {
+    body{
+    max-width:100%;
+    }
+    nav{
+    display:none;
+    background:;
+    position:relative;
+    top:-2.6rem;
+    z-index:8;
+    }
+    nav .fonts{
+    display:none;
+    }
+    nav #money{
+    
+    position:relative;
+    display:block;
+    }
+    .menulist{
+    
+    position:fixed;
+    top:0;
+    right:0;
+    background:#47D9F6;
+    width:100%;
+    height:44px;
+    display:flex;
+    text-align:center;
+    justify-content:end;
+    z-index:3;
+    }
+    .menulist li{
+    
+    display:block;
+    list-style:none;  
+    padding:2rem 1.5rem;
+    
+    }
+    .menulist li a{
+    float:right;
+    display:inline-block;
+    position:relative;
+    top:-1rem;
+    text-decoration:none;
+    color:#fff;
+    
+    }
+    .header{
+    margin-top:2.8rem;
+    max-width:100%;
+    height:90vh;
+    background:url("IMG7.jpg");
+    background-position:center;
+    background-size:cover;
+    }
+    section .showcase{ 
+    margin-top:1rem;
+    padding-bottom:5rem;
+    display:;
+    text-align:center;
+    column-count:3;
+    
+    }
+    #login-form{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    }
+    #login-form .loc{
+    margin-top:1rem;
+    }
+    #check{
+      display:none;
+    }
+    }
+</style>
+</head>
+<body>
+  </style>
+  </head>
+  <body>
+  <!-- wrapper starts-->
+  <div id="wrapper">
+  <div class="header">  
+  <nav>     
+  <h4 id="money">Money<span>Website</span></h4>
+  <i class="fas fa-shopping-cart" class="fonts"></i>
+  <i class="fa fa-search" class="fonts"></i>
+  </nav>
+  <div>
+  <ul class="nav-bar">
+  <input type="checkbox" id="check">
+  <span class="menulist">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">About</a></li>
+  <li><a href="#">Services</a></li>
+  <li><a href="#">Contact</a></li>
+  <label for="check" class="close-menu"><i class=" fas fa-times"style="color:black;"></i></label>
+  </span>
+  <label for="check" class="open-menu"><i class=" fas fa-bars"style="color:black;"></i></label>
+  </ul>
+  </div>
+  
+  
+  <div class="word">
+  <div class="sub">  
+  <h3>Want to make <span class="red"> money?</span></h3>  
+  </div>   
+  <div class="card">
+  <img src="IMG2.jpg" class="image">
+  <p>Easy banking</p>
+  </div>  
+  
+  <div class="flexbox">
+  <div class="right-sec">
+  <p>Newsletter</p>
+  </div>
+  
+  <div class="middle-sec">
+  <input class="input" type="email" placeholder="Email">   
+  <button class="butt">
+  <a href="#" class="btn">Subscribe</a>
+  </button>  
+  </div>   
+  </div>
+  </div>
+  
+  <section id="boxes"> 
+  <div class="container">
+  <div class="box">
+  <img src="IME1.png">
+  <p>Lorem ipsum dolor sit amet</p>
+  </div>
+  <div class="box">
+  <img src="IME2.png">
+  <p>Lorem ipsum dolor sit amet</p>
+  </div>
+  <div class="box">
+  <img src="IME3.png">
+  <p>Lorem ipsum dolor sit ame</p>
+  </div>
+  </div>
+  
+  <div class="container2">
+  <div class="box2">
+  <img src="IMG4.jpg">
+  <p>Lorem ipsum dolor sit amet</p>
+  </div>
+  <div class="box2">
+  <img src="IMG6.jpg">
+  <p>Lorem ipsum dolor sit amet</p>
+  </div>
+  </div>
+  <hr>
+  <hr>
+  <hr>
+  <div style="margin-bottom:2rem;" ></div>
+  <div id="login-form">
+  <div class="form-box">
+  <form id="login" class="input-group-login">
+  <input type="email" class="input-field" placeholder="Email Id" required="required">
+  <input type="text" class="input-field" placeholder="Enter Password" required="required">
+  
+  <input type="checkbox" class="check-box"><span class="remember">Remember Password</span>
+  
+  <button type="submit" class="submit-btn">Login In</button>
+  </form>
+  </div>
+  <div class="loc">
+  <div>
+  <h5>location</h5>
+  <p>28 Jackson Blvd Ste 1020 Chicago<br>IL 60604-2340</p>
+  <h5 class="h5">follow us</h5>
+  </div>
+  <div class="icons">
+  <i class=" fab fa-facebook-f"
+  style="background-color:;font-size:16px;padding-right:0.2rem"
+  ></i>
+  <i class=" fab fa-twitter-square"
+  style="background-color:;font-size:16px;padding:11px;padding-right:0.2rem"
+  ></i>
+  <i class=" fab fa-instagram-square"
+  style="background-color:;font-size:16px;padding:9px;padding-right:0.2rem"
+  ></i>
+  <i class=" fab fa-youtube"
+  style="background-color:;font-size:16px;padding:9px;"
+  ></i>
+  <div class="footer2">
+  <p>&copy; 2023 privacy policy</p>
+  </div>
+  </div>
+  </div>
+  
+  </div>
+  </section>
+  
+  <div class="about">
+  <div class="bg" >
+  <p>about us</p>
+  </div>
+  <div class="bg2">
+  <p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim laboris nisi 
+  </p>
+  </div>
+  </div>
+  
+  <section>
+  <h4>our courses</h4>
+  <div class="showcase">
+  
+  <div class="grid">
+  <p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore etsectetur adipis
+  </p>
+  <a href="#" id="btn">subscribe</a>
+  </div>
+  <div class="grid">
+  <p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  </p>
+  <a href="#" id="btn">subscribe</a>
+  </div>
+  <div class="grid">
+  <p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  </p>
+  <a href="#" id="btn">subscribe</a>
+  </div>
+  </div>
+  </section>
+  <div class="footer">
+  &copy; 2023
+  </div>
+  </div>
+  <!-- wrapper Ends-->
+  </body>
+  </html>
+</body>
+</html>
